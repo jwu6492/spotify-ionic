@@ -1,0 +1,7 @@
+{
+  "name": "stocks list",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

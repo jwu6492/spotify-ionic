@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "stocks list",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
