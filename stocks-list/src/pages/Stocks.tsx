@@ -11,10 +11,8 @@ import {
 } from "@ionic/react";
 import { useState } from "react";
 import axios from "axios";
-import http from "http";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
-import { toast } from "../toast"
+import { toast } from "../toast";
 
 const Stocks: React.FC = () => {
   const [stock, setStock] = useState("");
@@ -24,9 +22,13 @@ const Stocks: React.FC = () => {
     setPrice(null);
   }
   async function stockSearch() {
-    const res = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stock}/prev?adjusted=true&apiKey=N0xYH0QttgysqIJbFSkIt6xAn1OqefEt`);
+    const res = await axios.get(
+      `https://api.polygon.io/v2/aggs/ticker/${stock}/prev?adjusted=true&apiKey=N0xYH0QttgysqIJbFSkIt6xAn1OqefEt`
+    );
     if (res.status != 200) {
-      toast("Could not retreive stock data, please make sure you entered in the symbol correctly")
+      toast(
+        "Could not retreive stock data, please make sure you entered in the symbol correctly"
+      );
     }
     if (res.data != null) {
       setPrice(res.data.results[0].c);
@@ -46,20 +48,21 @@ const Stocks: React.FC = () => {
         <IonInput
           placeholder="Stock Name?"
           onIonChange={(e: any) => {
-            setStock(e.target.value)
+            setStock(e.target.value);
             if (e.target.value === "") {
               setPrice(null);
             }
-            }
-          }
+          }}
         />
         <IonButton onClick={stockSearch}>Search</IonButton>
         <IonButton onClick={reset}>Clear Search</IonButton>
-        { price != null && 
-         <IonCard>
-          <IonText>{stock}: {price}</IonText>
-         </IonCard>
-        }
+        {price != null && (
+          <IonCard>
+            <IonText>
+              {stock}: {price}
+            </IonText>
+          </IonCard>
+        )}
       </IonContent>
     </IonPage>
   );

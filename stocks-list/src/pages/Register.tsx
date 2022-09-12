@@ -9,7 +9,6 @@ import {
 } from "@ionic/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ExploreContainer from "../components/ExploreContainer";
 import { toast } from "../toast";
 import { registerUser } from "../firebaseConfig";
 import "./Tab1.css";
@@ -29,7 +28,7 @@ const Register: React.FC = () => {
     const res = await registerUser(username, password);
     if (res) {
       toast("You have successfully registered!");
-      window.history.replaceState({}, '', '/Login');
+      window.history.replaceState({}, "", "/Login");
       window.location.reload();
     }
   }

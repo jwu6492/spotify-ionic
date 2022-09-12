@@ -9,7 +9,6 @@ import {
 } from "@ionic/react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
 import { loginUser } from "../firebaseConfig";
 import { toast } from "../toast";
@@ -23,7 +22,7 @@ const Login: React.FC = () => {
     if (!res) {
       toast("Error logging with your credentials");
     } else {
-      window.history.replaceState({}, '', '/stocks');
+      window.history.replaceState({}, "", "/stocks");
       toast("You have successfully logged in!");
       window.location.reload();
     }

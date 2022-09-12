@@ -1,6 +1,5 @@
 import * as firebase from 'firebase/app';
 import * as firebaseAuth from 'firebase/auth';
-import { toast } from './toast';
 
 const config = {
   apiKey: "AIzaSyBiJkSLcWkbsTV2czTowoD8dM9poCEDuGs",
