@@ -19,6 +19,10 @@ import { toast } from "../toast"
 const Stocks: React.FC = () => {
   const [stock, setStock] = useState("");
   const [price, setPrice] = useState(null);
+  function reset() {
+    setStock("");
+    setPrice(null);
+  }
   async function stockSearch() {
     const res = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stock}/prev?adjusted=true&apiKey=N0xYH0QttgysqIJbFSkIt6xAn1OqefEt`);
     if (res.status != 200) {
@@ -41,9 +45,16 @@ const Stocks: React.FC = () => {
       <IonContent className="ion-padding">
         <IonInput
           placeholder="Stock Name?"
-          onIonChange={(e: any) => setStock(e.target.value)}
+          onIonChange={(e: any) => {
+            setStock(e.target.value)
+            if (e.target.value === "") {
+              setPrice(null);
+            }
+            }
+          }
         />
         <IonButton onClick={stockSearch}>Search</IonButton>
+        <IonButton onClick={reset}>Clear Search</IonButton>
         { price != null && 
          <IonCard>
           <IonText>{stock}: {price}</IonText>
